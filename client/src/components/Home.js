@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import Loading from './Loading'
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import './css/home.css';
@@ -14,7 +15,7 @@ class Home extends Component {
             email: '',
             pass: '',
             disabled: true,
-            loading: true
+            loading: false
         }
 
         this.handleChange = this.handleChange.bind(this);
@@ -27,7 +28,10 @@ class Home extends Component {
     }
 
     loginClick() {
-        console.log(this.state.email, this.state.pass);
+        this.setState({loading: true});
+        setTimeout(() => {
+            this.setState({loading: false});
+        }, 7000)
     }
 
     handleChange(e) {
@@ -45,9 +49,12 @@ class Home extends Component {
     }
 
     render() {
-
-
-        return (
+        if (this.state.loading) {
+            return (
+                <Loading/>
+            )
+        } else {
+            return (
             <div className='container'>
                 <div className='top'></div>
                 <div className='card'>
@@ -74,6 +81,7 @@ class Home extends Component {
                 </div>
             </div>
         )
+        }
     }
 }
 
