@@ -13,15 +13,21 @@ class Home extends Component {
         this.state = {
             email: '',
             pass: '',
-            disabled: false
+            disabled: true,
+            loading: true
         }
 
         this.handleChange = this.handleChange.bind(this);
         this.handlePass = this.handlePass.bind(this);
+        this.loginClick = this.loginClick.bind(this);
     }
 
     componentWillUpdate(nextProps, nextState) {
-        nextState.invalidData = !(nextState.email && nextState.pass);
+        nextState.disabled = !(nextState.email && nextState.pass);
+    }
+
+    loginClick() {
+        console.log(this.state.email, this.state.pass);
     }
 
     handleChange(e) {
@@ -55,10 +61,12 @@ class Home extends Component {
                                 <TextField
                                     hintText="Password"
                                     type="password"
+                                    value={this.state.pass} onChange={this.handlePass}
                                 /><br/>
                                 <div className='login-btn'>
                                     <RaisedButton label="Login" primary={true}
-                                                  disabled={this.state.disabled} />
+                                                  disabled={this.state.disabled}
+                                                  onClick={this.loginClick}/>
                                 </div>
                             </div>
                         </Card>
