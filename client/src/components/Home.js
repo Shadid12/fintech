@@ -21,9 +21,7 @@ class Home extends Component {
     }
 
     componentWillUpdate(nextProps, nextState) {
-        if(this.state.pass && this.state.disabled) {
-            this.setState({disabled: false})
-        }
+        nextState.invalidData = !(nextState.email && nextState.pass);
     }
 
     handleChange(e) {
