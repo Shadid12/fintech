@@ -1,0 +1,19 @@
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.card {
+	padding-top: 100px;
+}
+
+.wrapper {
+	padding: 25px;
+}
+
+.login-btn {
+	display: flex;
+	justify-content: center;
+	padding-top: 20px;
+}
