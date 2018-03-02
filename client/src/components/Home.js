@@ -60,6 +60,9 @@ class Home extends Component {
                 <div className='card'>
                     <MuiThemeProvider>
                         <Card >
+                            <div className='logo'>
+                                <div>Login</div>
+                            </div>
                             <div className='wrapper'>
                                 <TextField
                                     hintText="Email"
